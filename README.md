@@ -17,3 +17,9 @@ Send queer-related websites regularly to the Internet Archive
 - Every push to main starts the workflow to archive all URLs in `data/urls.txt`
   - Internet Archive access key and secret ([find here](https://archive.org/account/s3.php)) are stored as repository variables.
 
+
+
+
+## Using spn.sh
+
+- Example: https://github.com/overcast07/wayback-machine-spn-scripts/issues/5
