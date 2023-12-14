@@ -36,21 +36,32 @@ jobs:
         run: chmod a+x spn.sh
 
       # Run spn.sh to archive URLs
-      - name: Send websites to the Internet Archive
+      # - name: Send 10 random websites to the Internet Archive
+      #   run: |
+      #     # choose 10 random urls to save
+      #     random_urls=$(sort -R "./data/urls.txt" | head -10)
+      #     echo "Fetch those URLs: ${random_urls}"
+
+      #     # save outlinks regex as variable: save only outlinks that have domain to be saved in URL
+      #     outlinks_regex=$(cat "./data/outlinks_regex.txt")
+
+      #     # start main script
+      #     ./spn.sh \
+      #     -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }} \
+      #     -f ./logs \
+      #     -d if_not_archived_within=2629800 \
+      #     -o $outlinks_regex \
+      #     $random_urls
+      
+      - name: Send all websites to the Internet Archive - without outlinks
         run: |
-          # choose 10 random urls to save
-          random_urls=$(sort -R "./data/urls.txt" | head -10)
-          echo "Fetch those URLs: ${random_urls}"
-
-          # save outlinks regex as variable: save only outlinks that have domain to be saved in URL
-          outlinks_regex=$(cat "./data/outlinks_regex.txt")
-
-          # start main script
-          ./spn.sh \
-          -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }} \
-          -f ./logs \
-          -d if_not_archived_within=2629800 \
-          https://forummuenchen.org
+            # start main script
+            ./spn.sh \
+            -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }} \
+            -f ./logs \
+            # -d if_not_archived_within=2629800 \
+            #./data/urls.txt
+            https://www.velspol.de
       
       # spn.sh writes logging files. in order to inspect and use them, I need to commit them to the repo
       # following https://ilikekillnerds.com/2023/01/how-to-create-files-in-a-github-action-and-commit-them-to-your-repository/
