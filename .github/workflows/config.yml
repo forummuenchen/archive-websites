@@ -30,7 +30,9 @@ jobs:
       # Run spn.sh to archive URLs
       - name: Send websites to the Internet Archive
         run:  ./spn.sh -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }}  -f ./logs https://lambda-online.de/
-
+      
+      # spn.sh writes logging files. in order to inspect and use them, I need to commit them to the repo
+      # following https://ilikekillnerds.com/2023/01/how-to-create-files-in-a-github-action-and-commit-them-to-your-repository/
       - name: "Add spn.sh log files to repository"
         run: |
           git config --global user.email "no-reply@github.com"
