@@ -25,9 +25,17 @@ websites <- query_wikidata(query)
 
 writeLines(websites$url, "data/urls.txt")
 
-writeLines(websites %>% filter(str_detect(url, "forum|letra|museum|sub|muenchen")) %>% pull(url), "data/urls_test.txt")
+writeLines(websites %>% 
+             filter(str_detect(url, "forum|letra|museum|sub|muenchen")) %>% 
+             pull(url), 
+           "data/urls_test.txt")
 
 
 # export outlinks regex ---------------------------------------------------
 
-websites$url %>% str_remove_all("https?://|www.|/.*") %>% paste0(., collapse = "|") %>% write_lines(., "data/outlinks_regex.txt")
+websites$url %>% 
+  str_remove_all("https?://|www.|/.*") %>% 
+  paste0(., collapse = "|") %>% 
+  unique() %>% 
+  paste0('"', ., '"') %>% 
+  write_lines(., "data/outlinks_regex.txt")
