@@ -164,3 +164,6 @@ cython_debug/
 
 # allow spn.sh logs
 !logs/*.log
+logs/*[0-9]*
+
+test_logs/
