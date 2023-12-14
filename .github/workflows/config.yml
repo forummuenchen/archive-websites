@@ -59,8 +59,6 @@ jobs:
             ./spn.sh \
             -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }} \
             -f ./logs \
-            # -d if_not_archived_within=2629800 \
-            #./data/urls.txt
             https://www.velspol.de
       
       # spn.sh writes logging files. in order to inspect and use them, I need to commit them to the repo
