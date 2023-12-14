@@ -22,15 +22,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Get spn.sh script from remote repo
-      -  name: Set up spn.sh from wayback-machine-spn-scripts
-         run: |
-            git config --global user.name "GitHub Actions"
-            git config --global user.email "actions@github.com"
-            wget -qO spn.sh https://raw.github.com/overcast07/wayback-machine-spn-scripts/blob/main/spn.sh
-            chmod +x spn.sh
-            ./spn.sh
+      
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
