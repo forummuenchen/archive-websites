@@ -50,8 +50,6 @@ jobs:
           -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }} \
           -f ./logs \
           -d if_not_archived_within=2629800 \
-          #-o $outlinks_regex \
-          #$random_urls
           https://forummuenchen.org
       
       # spn.sh writes logging files. in order to inspect and use them, I need to commit them to the repo
