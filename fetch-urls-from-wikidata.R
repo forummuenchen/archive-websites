@@ -35,7 +35,7 @@ writeLines(websites %>%
 
 websites$url %>% 
   str_remove_all("https?://|www.|/.*") %>% 
-  paste0(., collapse = "|") %>% 
+  paste0('https?://(www.)?', ., collapse = "|") %>% 
   unique() %>% 
   paste0('"', ., '"') %>% 
-  write_lines(., "data/outlinks_regex.txt")
+  write_lines(., "data/outlinks_regex.txt", append = FALSE)
