@@ -55,11 +55,11 @@ jobs:
       
       - name: Send all websites to the Internet Archive - without outlinks
         run: |
-            # start main script
             ./spn.sh \
             -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }} \
             -f ./logs \
-            https://www.velspol.de
+            -d if_not_archived_within=2629800 \
+            ./data/urls.txt
       
       # spn.sh writes logging files. in order to inspect and use them, I need to commit them to the repo
       # following https://ilikekillnerds.com/2023/01/how-to-create-files-in-a-github-action-and-commit-them-to-your-repository/
