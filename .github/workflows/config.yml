@@ -29,9 +29,9 @@ jobs:
 
       # Run spn.sh to archive URLs
       - name: Send websites to the Internet Archive
-        run:  ./spn.sh -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }}  -f ./logs https://example.com/
+        run:  ./spn.sh -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }}  -f ./logs https://lambda-online.de/
 
-      - name: "Commit log files"
+      - name: "Add spn.sh log files to repository"
         run: |
           git config --global user.email "no-reply@github.com"
           git config --global user.name "GitHub Actions"
