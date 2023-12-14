@@ -10,5 +10,5 @@ Send queer-related websites regularly to the Internet Archive
 - Use this list of URLs (`data/urls.txt`) as input for a s[ophisticated bash script](https://github.com/overcast07/wayback-machine-spn-scripts) that sends websites to the Internet Archive using the Save Now API. 
   - Download  [spn.sh](https://github.com/overcast07/wayback-machine-spn-scripts/blob/main/spn.sh) file from the [wayback-machine-spn-scripts repository](https://github.com/overcast07/wayback-machine-spn-scripts): 
   ```bash
-   wget https://github.com/overcast07/wayback-machine-spn-scripts/blob/main/spn.sh
+   wget https://raw.githubusercontent.com/overcast07/wayback-machine-spn-scripts/main/spn.sh
    ``````
