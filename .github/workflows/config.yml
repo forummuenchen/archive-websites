@@ -27,5 +27,5 @@ jobs:
         run: chmod a+x spn.sh
 
       # Run spn.sh to archive URLs
-      - name: Run a multi-line script
-        run:  ./spn.sh ./data/urls_test.txt
+      - name: Send websites to the Internet Archive
+        run:  ./spn.sh ./data/urls_test.txt -a ${{ secrets.INTERNET_ARCHIVE_ACCESSKEY }}:${{ secrets.INTERNET_ARCHIVE_SECRET }}
