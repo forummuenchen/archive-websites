@@ -1,4 +1,3 @@
-library(tidyverse)
 library(WikidataQueryServiceR)
 
 
@@ -25,17 +24,9 @@ websites <- query_wikidata(query)
 
 writeLines(websites$url, "data/urls.txt")
 
-writeLines(websites %>% 
-             filter(str_detect(url, "forum|letra|museum|sub|muenchen")) %>% 
-             pull(url), 
-           "data/urls_test.txt")
-
-
 # export outlinks regex ---------------------------------------------------
 
-websites$url %>% 
-  str_remove_all("https?://|www.|/.*") %>% 
-  paste0('https?://(www.)?', ., collapse = "|") %>% 
-  unique() %>% 
-  paste0('"', ., '"') %>% 
-  write_lines(., "data/outlinks_regex.txt", append = FALSE)
+regex_domains <- unique(gsub("https?://(www.)?|/.+|/", "", websites$url))
+regex_domains <- paste0('https?://(www.)?', regex_domains, collapse = "|")
+regex_domains <- paste0('"', regex_domains, '"')
+writeLines(regex_domains, "data/outlinks_regex.txt")
