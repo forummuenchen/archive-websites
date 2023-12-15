@@ -22,11 +22,12 @@ websites <- query_wikidata(query)
 
 # Export txt --------------------------------------------------------------
 
-writeLines(websites$url, "data/urls.txt")
+urls <- sort(gsub("www.", "", websites$url))
+writeLines(urls, "data/urls.txt")
 
 # export outlinks regex ---------------------------------------------------
 
-regex_domains <- unique(gsub("https?://(www.)?|/.+|/", "", websites$url))
+regex_domains <- unique(gsub("https?://(www.)?|/.+|/", "", urls))
 regex_domains <- paste0('https?://(www.)?', regex_domains, collapse = "|")
 regex_domains <- paste0('"', regex_domains, '"')
 writeLines(regex_domains, "data/outlinks_regex.txt")
